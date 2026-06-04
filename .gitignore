@@ -1,0 +1,5 @@
+markets.parquet
+quant.parquet
+.claude
+.venv
+.idea
