@@ -1,0 +1,17 @@
+# Python
+**__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# uv
+.venv/
+
+# tests
+.pytest_cache/
+
+# Ignore model files but keep the directory
+models/*
+!models/.gitkeep

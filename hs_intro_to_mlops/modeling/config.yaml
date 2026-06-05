@@ -1,0 +1,50 @@
+data:
+  markets_path: ../../markets.parquet
+  quant_path: ../../quant.parquet
+  features_path: data/features.parquet
+  artifacts_dir: artifacts
+  cutoff_frac: 0.8
+
+split:
+  test_quantile: 0.8
+  val_frac: 0.15
+  random_state: 42
+
+topics:
+  n_clusters: 24
+  min_df: 50
+  max_features: 4000
+
+features:
+  - duration_hours
+  - has_pre_trades
+  - n_trades
+  - pre_volume
+  - price_mean
+  - price_std
+  - price_min
+  - price_max
+  - price_last
+  - price_drift
+  - avg_trade_usd
+  - buy_frac
+  - topic_cluster
+target: label_yes
+
+hpo:
+  n_trials: 25
+  direction: maximize
+  param_ranges:
+    n_estimators: [200, 2000]
+    learning_rate: [0.01, 0.2]
+    num_leaves: [15, 255]
+    max_depth: [-1, 16]
+    min_child_samples: [5, 200]
+    subsample: [0.6, 1.0]
+    colsample_bytree: [0.6, 1.0]
+    reg_lambda: [0.001, 10.0]
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: polymarket-lgbm-experiment
+  model_registry_name: polymarket-lgbm-model

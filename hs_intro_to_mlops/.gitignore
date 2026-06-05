@@ -1,0 +1,4 @@
+# Secrets — never commit
+upheld-setting-*.json
+*.iam.gserviceaccount.com.json
+.dvc/config.local

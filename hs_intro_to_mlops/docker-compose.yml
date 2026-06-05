@@ -1,0 +1,33 @@
+services:
+  api:
+    build: ./serving
+    image: polymarket-serving
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./modeling/models:/app/models:ro
+    environment:
+      MODELS_DIR: models
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  mlflow:
+    image: python:3.11-slim
+    working_dir: /workspace
+    volumes:
+      - ./modeling:/workspace
+    command:
+      - bash
+      - -c
+      - >-
+        pip install --quiet mlflow &&
+        mlflow server --backend-store-uri sqlite:///mlflow.db
+        --host 0.0.0.0 --port 5000
+        --allowed-hosts '*' --cors-allowed-origins '*'
+    ports:
+      - "5050:5000"
+    restart: unless-stopped

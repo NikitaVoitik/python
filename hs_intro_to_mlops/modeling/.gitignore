@@ -1,0 +1,28 @@
+# Python
+**__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# uv
+.venv/
+
+# Runtime artifacts (gitignored — created at runtime)
+artifacts/
+mlruns/
+mlartifacts/
+mlflow.db
+
+# Data: the heavy parquet is DVC-tracked (pulled from GDrive), never committed.
+# The .dvc pointer file and DVC's own data/.gitignore ARE tracked, so we only
+# ignore the actual data payloads here, not the whole data/ directory.
+data/*.parquet
+data/version.json
+
+# Ignore model files but keep the directory
+models/*
+!models/.gitkeep

@@ -1,0 +1,32 @@
+{
+  "markets": [
+    {
+      "duration_hours": 17.0,
+      "n_trades": 41,
+      "pre_volume": 1306.09,
+      "price_mean": 0.6009,
+      "price_std": 0.2719,
+      "price_min": 0.36,
+      "price_max": 0.999,
+      "price_last": 0.999,
+      "price_drift": 0.619,
+      "avg_trade_usd": 31.85,
+      "buy_frac": 0.0979,
+      "slug": "val-bo-rose-2026-03-10"
+    },
+    {
+      "duration_hours": 15.0,
+      "n_trades": 0,
+      "pre_volume": 0.0,
+      "price_mean": null,
+      "price_std": null,
+      "price_min": null,
+      "price_max": null,
+      "price_last": null,
+      "price_drift": null,
+      "avg_trade_usd": null,
+      "buy_frac": null,
+      "slug": "btc-march-price-greater"
+    }
+  ]
+}
